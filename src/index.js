@@ -9,6 +9,7 @@ root.render(
   <React.StrictMode>
     <h1>Weather App</h1>
     <App />
+    <p><a href="https://github.com/heatherdice/react-weather">Code</a> by Heather Dice</p>
   </React.StrictMode>
 );
 
