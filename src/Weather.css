@@ -33,10 +33,10 @@ body {
     list-style: none;
 }
 
-.Weather img {
-    height: 65px;
-    width: 65px;
-    margin-right: 10px;
+.Weather canvas {
+    margin-right: 5px;
+    margin-bottom: 8px;
+    line-height: 55px;
 }
 
 .Weather .temperature {
