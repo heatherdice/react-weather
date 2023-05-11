@@ -5,7 +5,7 @@ import './Forecast.css';
 
 export default function Forecast() {
     return (
-        <div clasName="Forecast">
+        <div className="Forecast">
             <div className="row">
                 <div className="col">
                     <div className="day">Friday</div>
