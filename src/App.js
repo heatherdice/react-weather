@@ -1,7 +1,6 @@
 import './App.css';
 import Weather from './Weather';
-import React, {useState} from "react";
-import axios from "axios";
+import React from "react";
 
 export default function App() {
   return (
