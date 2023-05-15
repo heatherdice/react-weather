@@ -31,6 +31,9 @@ export default function Forecast(props) {
                                 </div>
                             );
                         }
+                        else {
+                            return null;
+                        }
                     })}
                 </div>
             </div>
