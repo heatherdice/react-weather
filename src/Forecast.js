@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import './Forecast.css';
-import ForecastDay from './ForecastDay';
+import "./Forecast.css";
+import ForecastDay from "./ForecastDay";
 import axios from "axios";
 
 
@@ -19,11 +19,22 @@ export default function Forecast(props) {
         setLoaded(true);
     }
 
+    function load() {
+        let apiKey = "335d26daoc39f096bf1t1b45c4c341e4";
+        let latitude = props.coordinates.latitude;
+        let longitude = props.coordinates.longitude;
+        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=imperial`;
+    
+        axios.get(apiUrl).then(handleResponse);
+
+        return null;
+    }
+
     if (loaded) {
         return (
             <div className="Forecast">
                 <div className="row">
-                    {forecast.map(function(dailyForecast, index){
+                    {forecast.map(function(dailyForecast, index) {
                         if (index < 5) {
                             return (
                                 <div className="col" key={index}>
@@ -40,13 +51,6 @@ export default function Forecast(props) {
         );
     }
     else {
-        let apiKey = "335d26daoc39f096bf1t1b45c4c341e4";
-        let latitude = props.coordinates.latitude;
-        let longitude = props.coordinates.longitude;
-        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=imperial`;
-    
-        axios.get(apiUrl).then(handleResponse);
-
-        return null;
+        load();
     }
 }
