@@ -7,6 +7,7 @@ import "./Weather.css";
 export default function Weather(props) {
     const [city, setCity] = useState(props.defaultCity);
     const [weatherData, setWeatherData] = useState({ready: false});
+
     function handleResponse(response) {
         setWeatherData({
             ready: true,
@@ -25,6 +26,7 @@ export default function Weather(props) {
     function search() {
         const apiKey = "335d26daoc39f096bf1t1b45c4c341e4";
         let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`; // city = (use)State
+        
         axios.get(apiURL).then(handleResponse);
     }
 
