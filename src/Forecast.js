@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './Forecast.css';
 import ForecastDay from './ForecastDay';
 import axios from "axios";
@@ -7,10 +7,15 @@ import axios from "axios";
 export default function Forecast(props) {
     let [loaded, setLoaded] = useState(false);
     let [forecast, setForecast] = useState(null);
+
+    // set loaded to false when the coordinates change
+    // shows forecast for city when new city is searched
+    useEffect(() => {
+        setLoaded(false);
+    }, [props.coordinates]);
     
     function handleResponse(response) {
         setForecast(response.data.daily);
-        console.log(response.data.daily);
         setLoaded(true);
     }
 
