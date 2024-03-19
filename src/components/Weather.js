@@ -3,6 +3,7 @@ import WeatherInfo from "./WeatherInfo.js";
 import Forecast from "./Forecast.js"
 import axios from "axios";
 import "../css/Weather.css";
+// will need to import Background
 
 export default function Weather(props) {
     const [city, setCity] = useState(props.defaultCity);
@@ -20,6 +21,7 @@ export default function Weather(props) {
             city: response.data.city,
             humidity: response.data.temperature.humidity,
             wind: response.data.wind.speed
+            // add something here to grab image?
         });
     }
 

@@ -36,7 +36,7 @@ export default function Background() {
 
     return (
         <div className="vh-100 vw-100 position-fixed overflow-hidden top-0 left-0">
-            <img src="" />
+            <img src={} />
         </div>
     )
 }
