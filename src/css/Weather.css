@@ -1,13 +1,13 @@
 body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-    color: #0067AE;
+    color: #31255a;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 .Weather {
-    border: 1px solid #0067AE;
+    border: 1px solid #31255a;
     padding: 16px;
     margin: 30px auto;
     border-radius: 4px;
