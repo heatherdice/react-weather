@@ -1,37 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 // import ReactAnimatedWeather from "react-animated-weather";
 
-export default function WeatherIcon() {
-    const [weatherIcon, setWeatherIcon] = useState('');
+export default function WeatherIcon(props) {
+    // calls getImage & sets image to match icon
+    // function backgroundImage(response) {
+    //     document.querySelector('#icon').setAttribute("src", response.data.condition.icon_url);
+    //     let iconElement = document.querySelector("#icon");
+    //     iconElement.setAttribute("alt", response.data.condition.icon);
+    // }
 
-    useEffect(() => {
-        const fetchWeatherIcon = async () => {
-            try {
-                const apiKey = '335d26daoc39f096bf1t1b45c4c341e4';
-                const response = await fetch(`https://api.shecodes.io/weather/v1/current?&key=${apiKey}&units=imperial`);
-                if (response.ok) {
-                    const iconData = await response.json();
-                    console.log('Weather Icon Data: ', iconData);
-                    setWeatherIcon(iconData.icon);
-                } else {
-                    console.error('Failed to fetch weather icon.');
-                }
-            } catch (error) {
-                console.error('Error fetching weather icon.', error);
-            }
-        };
+    // useEffect(() => {
+    //     backgroundImage(response);
+    // }, [props.icon]);
 
-        fetchWeatherIcon();
-    }, []);
-
-    return (
-        <div>
-            {weatherIcon &&
-                <img src={weatherIcon} alt="weather icon" />
-            }
-        </div>
-    );
-
+    // map of icon descriptions for ReactAnimatedWeather
     // const descriptionMap = {
     //     "clear-sky-day": "CLEAR_DAY",
     //     "clear-sky-night": "CLEAR_NIGHT",
@@ -53,12 +35,17 @@ export default function WeatherIcon() {
     //     "mist-night": "FOG"
     // };
 
-    // return (
-    //     <ReactAnimatedWeather
-    //         icon={descriptionMap[props.code]}
-    //         color="#0CB6D7"
-    //         size={props.size}
-    //         animate={true}
-    //     />
-    // );
+    return (
+        <>
+            <img id="icon" src={props.icon} alt={props.alt} height={70} />
+        </>
+
+        // previous return code, using ReactAnimatedWeather component
+        // <ReactAnimatedWeather
+        //     icon={descriptionMap[props.code]}
+        //     color="#0CB6D7"
+        //     size={props.size}
+        //     animate={true}
+        // />
+    );
 }
