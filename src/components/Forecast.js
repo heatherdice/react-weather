@@ -33,7 +33,7 @@ export default function Forecast(props) {
     if (loaded) {
         return (
             <div className="Forecast">
-                <div className="row">
+                <div className="row flex-column flex-sm-row gap-3">
                     {forecast.map(function(dailyForecast, index) {
                         if (index < 5) {
                             return (
