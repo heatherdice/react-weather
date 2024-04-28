@@ -14,7 +14,7 @@ export default function WeatherInfo(props) {
             </ul>
             <div className="row mt-3">
                 <div className="col d-flex">
-                    <WeatherIcon icon={props.data.icon} alt={props.data.iconText} />
+                    <WeatherIcon icon={props.data.icon} alt={props.data.iconText} height="90" />
                     <UnitConversion fahrenheit={props.data.temperature}/>
                     <p>
                     </p>

@@ -51,8 +51,7 @@ h1 {
 
 .Weather .temperature {
     font-weight: bold;
-    font-size: 55px;
-    line-height: 55px;
+    font-size: 3em;
     font-weight: 400;
 }
 
