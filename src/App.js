@@ -6,7 +6,8 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather defaultCity="Philadelphia"/>
+        {/* previously included prop defaultCity="Philadelphia" */}
+        <Weather />
         <footer>
           <p>
             <a href="https://github.com/heatherdice/react-weather">Code</a> by Heather Dice

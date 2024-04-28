@@ -7,7 +7,7 @@ import "../css/Weather.css";
 
 export default function Weather(props) {
     // establish useState for city, weather data
-    const [city, setCity] = useState(props.defaultCity);
+    const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState({ready: false});
 
     // set weather data according to API response
@@ -27,12 +27,45 @@ export default function Weather(props) {
         });
     }
 
-    // API call
+    // handle errors for geolocation function
+    function handleError(error) {
+        console.error('API request error: ', error);
+    }
+
+    // sets initial city to user's current location; otherwise, sets a default location &/or handles errors
     function search() {
         const apiKey = "335d26daoc39f096bf1t1b45c4c341e4";
-        let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`; // city = (use)State
-        
-        axios.get(apiURL).then(handleResponse);
+    
+        // check if geolocation is supported
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const apiURL = `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=imperial`;
+    
+                    // make API call w/ lat & long
+                    axios.get(apiURL)
+                        .then(handleResponse)
+                        .catch(handleError);
+                },
+                (error) => {
+                    console.error('Error getting geolocation:', error);
+                    // if geolocation fails, set default city to Philadelphia
+                    const defaultCity = "Philadelphia";
+                    const apiURL = `https://api.shecodes.io/weather/v1/current?query=${defaultCity}&key=${apiKey}&units=imperial`;
+                    axios.get(apiURL)
+                        .then(handleResponse)
+                        .catch(handleError);
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+            const defaultCity = "Philadelphia";
+            const apiURL = `https://api.shecodes.io/weather/v1/current?query=${defaultCity}&key=${apiKey}&units=imperial`;
+            axios.get(apiURL)
+                .then(handleResponse)
+                .catch(handleError);
+        }
     }
 
     // submit city
