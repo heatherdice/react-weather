@@ -81,15 +81,17 @@ export default function Weather() {
     // return weather info or loading message
     if (weatherData.ready) {
         return (
-            <div className="Weather">
+            <>
                 <Background image={weatherData.iconText} />
-                <form onSubmit={handleSubmit} className="input-group">
-                    <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange} />
-                    <button type="button" className="btn fw-semibold" id="button-addon2">Search</button>
-                </form>
-                <WeatherInfo data={weatherData} />
-                <Forecast coordinates={weatherData.coordinates} />
-            </div>
+                <div className="Weather">
+                    <form onSubmit={handleSubmit} className="input-group">
+                        <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange} />
+                        <button type="button" className="btn fw-semibold" id="button-addon2">Search</button>
+                    </form>
+                    <WeatherInfo data={weatherData} />
+                    <Forecast coordinates={weatherData.coordinates} />
+                </div>
+            </>
         );
     }
     else {

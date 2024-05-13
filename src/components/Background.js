@@ -2,6 +2,8 @@ import React from "react";
 
 export default function Background(props) {
     const getBackgroundImage = (iconName) => {
+        console.log("Icon name: ", iconName);
+
         let iconImages = {
             "broken-clouds-day" : "url('../../assets/images/brokenCloudsDay.jpg')",
             "broken-clouds-night" : "url('../../assets/images/brokenCloudsNight.jpg')",
@@ -23,14 +25,17 @@ export default function Background(props) {
             "thunderstorm-night" : "url('../../assets/images/thunderstormNight.jpg')"
         };
         
-        return iconImages[iconName];
+        const imageURL = iconImages[iconName];
+        console.log("Image URL: ", imageURL);
+        return imageURL;
     }
 
-    const backgroundImage = getBackgroundImage(props.iconText);
+    const backgroundImage = getBackgroundImage(props.image);
+    console.log("Background image: ", backgroundImage);
 
     return (
         <div className="vh-100 vw-100 position-fixed overflow-hidden top-0 left-0">
-            <img src={backgroundImage} alt={props.iconText} />
+            <img src={backgroundImage} alt={props.image} />
         </div>
     )
 }
