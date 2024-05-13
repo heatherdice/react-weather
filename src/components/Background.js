@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 export default function Background(props) {
-    const getBackgroundImage = (iconName) => {
-        console.log("Icon name: ", iconName);
+    const getBackgroundImage = useMemo(() => {
+        // console.log("Icon name: ", props.image);
 
         let iconImages = {
             "broken-clouds-day" : "url('../../assets/images/brokenCloudsDay.jpg')",
@@ -25,17 +25,23 @@ export default function Background(props) {
             "thunderstorm-night" : "url('../../assets/images/thunderstormNight.jpg')"
         };
         
-        const imageURL = iconImages[iconName];
+        const imageURL = iconImages[props.image];
         console.log("Image URL: ", imageURL);
         return imageURL;
-    }
+    }, [props.image]); 
 
-    const backgroundImage = getBackgroundImage(props.image);
-    console.log("Background image: ", backgroundImage);
+    const backgroundStyle = {
+        backgroundImage: getBackgroundImage,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100vw",
+        height: "100vh",
+        position: "fixed",
+        top: 0,
+        left: 0,
+    };
 
     return (
-        <div className="vh-100 vw-100 position-fixed overflow-hidden top-0 left-0">
-            <img src={backgroundImage} alt={props.image} />
-        </div>
+        <div style={backgroundStyle} aria-label={props.image}></div>
     )
 }
