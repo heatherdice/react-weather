@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import WeatherInfo from "./WeatherInfo.js";
 import Forecast from "./Forecast.js"
+import Background from "./Background.js";
 import axios from "axios";
 import "../css/Weather.css";
-// will need to import Background
 
-export default function Weather(props) {
+export default function Weather() {
     // establish useState for city, weather data
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState({ready: false});
@@ -23,7 +23,6 @@ export default function Weather(props) {
             city: response.data.city,
             humidity: response.data.temperature.humidity,
             wind: response.data.wind.speed
-            // add something here to grab image?
         });
     }
 
@@ -83,6 +82,7 @@ export default function Weather(props) {
     if (weatherData.ready) {
         return (
             <div className="Weather">
+                <Background image={weatherData.iconText} />
                 <form onSubmit={handleSubmit} className="input-group">
                     <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange} />
                     <button type="button" className="btn fw-semibold" id="button-addon2">Search</button>

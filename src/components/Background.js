@@ -1,43 +1,36 @@
-// import React from "react";
-// import WeatherIcon from "./WeatherIcon.js";
+import React from "react";
 
-// export default function Background() {
+export default function Background(props) {
+    const getBackgroundImage = (iconName) => {
+        let iconImages = {
+            "broken-clouds-day" : "url('../../assets/images/brokenCloudsDay.jpg')",
+            "broken-clouds-night" : "url('../../assets/images/brokenCloudsNight.jpg')",
+            "clear-sky-day" : "url('../../assets/images/clearSkyDay.jpg')",
+            "clear-sky-night" : "url('../../assets/images/clearSkyNight.jpg')",
+            "few-clouds-day" : "url('../../assets/images/fewCloudsDay.jpg')",
+            "few-clouds-night" : "url('../../assets/images/fewCloudsNight.jpg')",
+            "mist-day" : "url('../../assets/images/mistDay.jpg')",
+            "mist-night" : "url('../../assets/images/mistNight.jpg')",
+            "rain-day" : "url('../../assets/images/rainDay.jpg')",
+            "rain-night" : "url('../../assets/images/rainNight.jpg')",
+            "shower-rain-day" : "url('../../assets/images/rainDay.jpg')",
+            "shower-rain-night" : "url('../../assets/images/rainNight.jpg')",
+            "scattered-clouds-day" : "url('../../assets/images/scatteredCloudsDay.jpg')",
+            "scattered-clouds-night" : "url('../../assets/images/scatteredCloudsNight.jpg')",
+            "snow-day" : "url('../../assets/images/snowDay.jpg')",
+            "snow-night" : "url('../../assets/images/snowNight.jpg')",
+            "thunderstorm-day" : "url('../../assets/images/thunderstormDay.jpg')",
+            "thunderstorm-night" : "url('../../assets/images/thunderstormNight.jpg')"
+        };
+        
+        return iconImages[iconName];
+    }
 
-//     function getImage(iconElement) {
-//         let iconImages = {
-//             "broken-clouds-day" : "url('../images/brokenCloudsDay.jpg')",
-//             "broken-clouds-night" : "url('../images/brokenCloudsNight.jpg')",
-//             "clear-sky-day" : "url('../images/clearSkyDay.jpg')",
-//             "clear-sky-night" : "url('../images/clearSkyNight.jpg')",
-//             "few-clouds-day" : "url('../images/fewCloudsDay.jpg')",
-//             "few-clouds-night" : "url('../images/fewCloudsNight.jpg')",
-//             "mist-day" : "url('../images/mistDay.jpg')",
-//             "mist-night" : "url('../images/mistNight.jpg')",
-//             "rain-day" : "url('../images/rainDay.jpg')",
-//             "rain-night" : "url('../images/rainNight.jpg')",
-//             "shower-rain-day" : "url('../images/rainDay.jpg')",
-//             "shower-rain-night" : "url('../images/rainNight.jpg')",
-//             "scattered-clouds-day" : "url('../images/scatteredCloudsDay.jpg')",
-//             "scattered-clouds-night" : "url('../images/scatteredCloudsNight.jpg')",
-//             "snow-day" : "url('../images/snowDay.jpg')",
-//             "snow-night" : "url('../images/snowNight.jpg')",
-//             "thunderstorm-day" : "url('../images/thunderstormDay.jpg')",
-//             "thunderstorm-night" : "url('../images/thunderstormNight.jpg')"
-//         }
-//         return iconImages[iconElement];
-//     }
+    const backgroundImage = getBackgroundImage(props.iconText);
 
-//     // change this to useEffect
-//     function backgroundImage(response) {
-//         document.querySelector('#icon').setAttribute("src", response.data.condition.icon_url);
-//         let iconElement = document.querySelector("#icon");
-//         iconElement.setAttribute("alt", response.data.condition.icon);
-//         document.body.style.backgroundImage = getImage(iconElement.alt); // calls below function & sets image to match icon
-//     }
-
-//     return (
-//         <div className="vh-100 vw-100 position-fixed overflow-hidden top-0 left-0">
-//             <img src={} />
-//         </div>
-//     )
-// }
+    return (
+        <div className="vh-100 vw-100 position-fixed overflow-hidden top-0 left-0">
+            <img src={backgroundImage} alt={props.iconText} />
+        </div>
+    )
+}
